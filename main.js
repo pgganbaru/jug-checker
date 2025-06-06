@@ -77,7 +77,7 @@ window.onload = async function () {                         //htmlが全部読�
             const gassansa = safeDiv(Math.abs(gassan - setting_gassan), gassanWeight);
             const budousa = safeDiv(Math.abs(budou1 - setting_budou), budouWeight); //big差とブドウ差は使っていないが念のため。
 
-            const score = regsa * 10 + gassansa * 6 * bigsa * 2 * budousa * 1;    //regと合算の重み付け　bigとブドウは設定差が小さいので無視
+            const score = regsa * 10 + gassansa * 6 * bigsa * 0.05;    //regと合算の重み付け　bigとブドウは設定差が小さいので無視
             hyoukaList.push({ setting: i, score });     //比較した値をlistに入れる
         }
 
