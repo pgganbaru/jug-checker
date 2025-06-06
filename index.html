@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ジャグラー設定判別</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h2>ジャグラー設定判別ツール</h2>
+
+    <select id="daiSelect">
+        <option value="" disabled selected>台を選んでください</option>
+    </select>
+
+    <p>総回転数: <input type="number" id="total"></p>
+    <p>BIG回数: <input type="number" id="big"></p>
+    <p>REG回数: <input type="number" id="reg"></p>
+    <p>ぶどう回数: <input type="number" id="budou"></p>
+
+    <button id="judgeBtn">設定を判別！</button>
+
+    <div id="kikaiwariDisp"></div>
+
+    <script src="./main.js"></script>
+</body>
+</html>
