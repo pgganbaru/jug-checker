@@ -18,7 +18,7 @@ window.onload = async function () {                         //htmlが全部読�
         console.error("JSONの読み込みに失敗しました。");        //json読み込み失敗をコンソール表示
     }
 
-    document.getElementById("judgeBtn").addEventListener("click", function () {     //ボタンが押されたら
+    document.getElementById("judgeBtn").addEventListener("click", function () {     //無名関数
         const total = Number(document.getElementById("total").value);
         const big = Number(document.getElementById("big").value);       //それぞれの回転数・big・reg・ブドウをhtmlから取得
         const reg = Number(document.getElementById("reg").value);
@@ -26,6 +26,11 @@ window.onload = async function () {                         //htmlが全部読�
 
         if (!total || total <= 0) {                                    //総回転数が0回だったら無効
             display.innerHTML = "総回転数は1以上で入力してください。";
+            return;
+        }
+
+        if (big > total || reg > total || budou > total) {
+            display.innerHTML = "BIG・REG・ぶどう回数が総回転数を超えています。";   //
             return;
         }
 
@@ -52,10 +57,10 @@ window.onload = async function () {                         //htmlが全部読�
         }
 
         //正規化係数（正規化用の重み)
-        const bigWeight = 0.00026 || 1;                     //NaN防止の念のためのfallback
-        const regWeight = 0.00165 || 1;
-        const gassanWeight = 0.00191 || 1;
-        const budouWeight = 0.0069 || 1;
+        const bigWeight = 0.00026;
+        const regWeight = 0.00165;
+        const gassanWeight = 0.00191;
+        const budouWeight = 0.0069;
 
         //回転数の重みを付ける(試行回数が少ないと信頼度は落ちる)
         const reliability = Math.min(total / 10000, 1.0);   //総回転数から10000を割る。最大値は1。
